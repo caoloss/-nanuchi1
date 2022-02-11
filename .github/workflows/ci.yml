@@ -37,7 +37,7 @@ jobs:
         arguments: build
         
     - name: List current folder
-      run: ls -la /build/libs/
+      run: ls -la
   
     - name: Build and Push Docker image
       uses: mr-smithers-excellent/docker-build-push@v5
