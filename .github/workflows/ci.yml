@@ -34,10 +34,10 @@ jobs:
     - name: Build with Gradle
       uses: gradle/gradle-build-action@937999e9cc2425eddc7fd62d1053baf041147db7
       with:
-        arguments: build/libs
+        arguments: build
         
     - name: List current folder
-      run: ls -la build
+      run: ls -la build/libs/
   
     - name: Build and Push Docker image
       uses: mr-smithers-excellent/docker-build-push@v5
