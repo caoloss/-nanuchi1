@@ -30,14 +30,10 @@ jobs:
       run: ls -la build/libs/
   
     - name: docker login
-     # env:
-     #   DOCKER_USER: ${{secrets.DOCKER_USER}}
-     #   DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
-     #   REPO_NAME: ${{secrets.REPO_NAME}}
       run: |
         docker login -u shabnam790 -p Testing@123 
     - name: Build the Docker image
-      run: docker build -t shabnam790/internaldemo .
+      run: docker build -t shabnam790/internaldemo:latest .
     - name: Docker Push
       run: docker push shabnam790/internaldemo
       
