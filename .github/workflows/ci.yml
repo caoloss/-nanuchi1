@@ -8,9 +8,9 @@
 name: Java CI with Gradle
 on:
   push:
-    branches: [ test ]
+    branches: [ jenkins ]
   pull_request:
-    branches: [ test ]
+    branches: [ jenkins ]
 jobs:
   build:
     runs-on: ubuntu-latest
