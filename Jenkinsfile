@@ -14,6 +14,7 @@ pipeline {
                 sh 'docker build -t shabnam790/internaldemo .' 
           }
         }
+     
   stage('Publish image to Docker Hub') { 
             steps {
         withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
