@@ -6,23 +6,14 @@
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
 
 name: Java CI with Gradle
-
 on:
   push:
-    branches: [ master ]
+    branches: [ jenkins ]
   pull_request:
-    branches: [ master ]
-
+    branches: [ jenkins ]
 jobs:
   build:
-
-#    runs-on: ${{matrix.os}}
-#    strategy: 
-#      matrix:
-#        os: [ubuntu-latest, windows-latest, macOS-latest]
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 11
@@ -35,15 +26,14 @@ jobs:
       uses: gradle/gradle-build-action@937999e9cc2425eddc7fd62d1053baf041147db7
       with:
         arguments: build
-        
     - name: List current folder
       run: ls -la build/libs/
   
-    - name: Build and Push Docker image
-      uses: mr-smithers-excellent/docker-build-push@v5
-      with:
-        image: iag2010/cicd
-        registry: docker.io
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+    - name: docker login
+      run: |
+        docker login -u shabnam790 -p Testing@123 
+    - name: Build the Docker image
+      run: docker build -t shabnam790/internaldemo:latest .
+    - name: Docker Push
+      run: docker push shabnam790/internaldemo:latest
       
